@@ -1,0 +1,15 @@
+<h1>Articles#index</h1>
+<p>Find me in app/views/articles/index.html.erb</p>
+
+
+<%= link_to "Add New Article", new_article_path %>
+
+<ul>
+<% @articles.each do |article| %>
+  <li><%= raw Kramdown::Document.new(link_to article.title, article_path(article)).to_html %> <%= link_to "Delete", article_path(article),
+      method: :delete,
+      data: { confirm: "Are you sure?" }  %>
+
+  </li>
+<% end %>
+</ul>
